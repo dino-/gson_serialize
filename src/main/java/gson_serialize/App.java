@@ -1,6 +1,6 @@
 package gson_serialize;
 
-import com.google.gson.FieldNamingPolicy;
+// import com.google.gson.FieldNamingPolicy;
 import com.google.gson.Gson;
 import com.google.gson.GsonBuilder;
 import com.google.gson.JsonElement;
@@ -44,7 +44,7 @@ public class App {
     try (PrintStream prs = new PrintStream(System.out, true, "UTF8")) {
       Gson gson = new GsonBuilder()
         .excludeFieldsWithModifiers(Modifier.TRANSIENT)
-        .setFieldNamingPolicy(FieldNamingPolicy.UPPER_CAMEL_CASE)
+        // .setFieldNamingPolicy(FieldNamingPolicy.UPPER_CAMEL_CASE)
         .create();
       
       User user = new User("Peter", "Flemming", new Address("NC", 27603));
