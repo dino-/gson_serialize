@@ -34,10 +34,19 @@ class Address {
 
 public class App {
 
+/*
   public static JsonObject combine(JsonObject oLeft, JsonObject oRight) {
     JsonObject oNew = oLeft.deepCopy();
     for (String key : oRight.keySet()) { oNew.add(key, oRight.get(key)); }
     return oNew;
+  }
+*/
+
+  public static JsonObject prepare(Gson b, User u) {
+    JsonObject joUser = b.toJsonTree(u).getAsJsonObject();
+    JsonObject joAddr = b.toJsonTree(u.address).getAsJsonObject();
+    for (String key : joAddr.keySet()) { joUser.add(key, joAddr.get(key)); }
+    return joUser;
   }
 
   public static void main(String[] args) throws IOException {
@@ -49,9 +58,28 @@ public class App {
       
       User user = new User("Peter", "Flemming", new Address("NC", 27603));
 
+/*
       JsonObject userO = gson.toJsonTree(user).getAsJsonObject();
       JsonObject addrO = gson.toJsonTree(user.address).getAsJsonObject();
       gson.toJson(combine(userO, addrO), prs);
+*/
+
+      Retrofit retrofit = new Retrofit(prs, gson);
+      retrofit.sendObject(prepare(gson, user));
     }
   }
+}
+
+class Retrofit {
+
+  private final PrintStream prs;
+  private final Gson gson;
+
+  public Retrofit(PrintStream prs, Gson gson) {
+    this.prs = prs;
+    this.gson = gson;
+  }
+
+  public void sendObject(Object o) { gson.toJson(o, prs); }
+
 }
