@@ -43,6 +43,10 @@ There's a helper script in the project: `run.sh`
 It may also be useful to run the output through `json_reformat`, which is in
 the `yajl-tools` package on Debian.
 
+Here's a simple build/run/format command to re-use:
+
+    $ mvn package && ./run.sh | json_reformat
+
 
 ## Contact
 
