@@ -13,7 +13,7 @@ Testing out how the Gson API works
 
 This project was created like this:
 
-    $ mvn archetype:generate -DgroupId=gson_serialize -DartifactId=gswork -DarchetypeArtifactId=maven-archetype-quickstart -DarchetypeVersion=1.4 -DinteractiveMode=false
+    $ mvn archetype:generate -DgroupId=gson_serialize -DartifactId=gson_serialize -DarchetypeArtifactId=maven-archetype-quickstart -DarchetypeVersion=1.4 -DinteractiveMode=false
 
 And the following was added to `pom.xml`
 
