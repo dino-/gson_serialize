@@ -45,12 +45,15 @@ public class App {
       Gson gson = new GsonBuilder()
         .excludeFieldsWithModifiers(Modifier.TRANSIENT)
         // .setFieldNamingPolicy(FieldNamingPolicy.UPPER_CAMEL_CASE)
+        .setPrettyPrinting()
         .create();
       
       User user = new User("Peter", "Flemming", new Address("NC", 27603));
 
       Object objToBeSerialized = prepare(gson, user);
       gson.toJson(objToBeSerialized, prs);
+
+      System.out.println();
     }
   }
 }
